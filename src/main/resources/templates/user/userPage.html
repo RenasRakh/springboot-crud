@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:switch="${user}">
+
+    <div th:case="*">
+        <h2 align="center">User data</h2>
+        <table border="4" align="center">
+            <thead>
+            <tr>
+
+                <th><b>Username</b></th>
+                <th><b>Password</b></th>
+                <th><b>Email</b></th>
+                <th><b>First name</b></th>
+                <th><b>Last name</b></th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${user}">
+                <td align="center" th:text="*{user.username}"></td>
+                <td align="center" th:text="*{user.password}"></td>
+                <td align="center" th:text="*{user.email}"></td>
+                <td align="center" th:text="*{user.firstName}"></td>
+                <td align="center" th:text="*{user.lastName}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p align="center"><a href="/logout">Logout</a></p>
+</div>
+</body>
+</html>

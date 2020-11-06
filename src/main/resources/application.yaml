@@ -1,0 +1,19 @@
+
+server:
+  port: 8189
+  servlet:
+    context-path: /
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        temp:
+          use_jdbc_metadata_defaults: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springsecurity0?serverTimezone=UTC
+
+    username: root
+    password: sql4*vjyjkbn3*sS

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style>
+        table th, table td {padding: 5px;}
+        .row  {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Users</h1>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Roles</th>
+        <th>Edit</th>
+    </tr>
+
+    <tr th:each="user, state : ${users}"
+        class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+
+        <td th:utext="${user.getId()}">Id</td>
+        <td th:utext="${user.getFirstName()}">Name</td>
+        <td th:utext="${user.getLastName()}">Last name</td>
+        <td th:utext="${user.getEmail()}">eMail</td>
+        <td th:utext="${user.getUsername()}">Username</td>
+        <td th:utext="${user.getPassword()}">Password</td>
+        <td><a th:each="role : ${user.getRoles()}" th:text="${role.getName()}">Role</a></td>
+       <td><a th:href="${'/admin/' + user.id + '/edit'}">Edit</a> or <a th:href="${'/admin/delete?id=' + user.id}">delete</a> </td>
+
+    </tr>
+
+</table>
+<a href="/admin/new">Add new User</a>
+
+</body>
+</html>
